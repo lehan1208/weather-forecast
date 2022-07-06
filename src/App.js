@@ -14,7 +14,7 @@ function App() {
   const [query, setQuery] = useState({ q: "Hanoi" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
-  const [bgImage, setBgImage] = useState("");
+  const [bgImage, setBgImage] = useState("clear");
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -22,9 +22,9 @@ function App() {
         .then((data) => {
           setWeather(data);
           setBgImage(data.weather[0].main);
-          console.log(data.name);
+          // console.log(data.name);
         })
-        .catch((err) => console.error("Dang co loi"));
+        .catch((err) => console.log("Dang co loi", err));
     };
     fetchWeather();
   }, [query, units]);
